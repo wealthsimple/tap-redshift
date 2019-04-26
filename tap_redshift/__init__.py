@@ -87,6 +87,7 @@ def discover_catalog(conn, db_schema):
         c.is_nullable
         FROM INFORMATION_SCHEMA.Tables t
         JOIN INFORMATION_SCHEMA.Columns c ON c.table_name = t.table_name
+            AND c.table_schema = t.table_schema
         WHERE t.table_schema = '{}'
         ORDER BY c.table_name, c.ordinal_position
         """.format(db_schema))
